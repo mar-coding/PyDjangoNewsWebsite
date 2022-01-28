@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+{% block content %}
+    <!-- Grid -->
+    <div class="w3-row">
+
+        <!-- Blog entries -->
+        <div class="w3-col l8 s12">
+            <!-- Blog entry -->
+            {% for news in nnews %}
+                <div class="w3-card-4 w3-margin w3-white">
+                    <img src="../media/{{ news.image }}" alt="{{ news.title }}" style="width:100%">
+                    <div class="w3-container">
+                        <h3><b>{{ news.title }}</b></h3>
+                        <h5>تاریخ <span class="w3-opacity">{{ news.time }}</span></h5>
+                    </div>
+
+                    <div class="w3-container">
+                        <div class="w3-row">
+                            <div class="w3-col l2 m2 s5 ">
+                                <a href="/detail/{{ news.id }}">
+                                    <p>
+                                        <button class="w3-button w3-padding-large w3-white w3-border"><b>ادامه مطلب</b>
+                                        </button>
+                                    </p>
+                                </a>
+                            </div>
+                            <div class="w3-col l10 m10 s6">
+                                <p><span class="w3-padding-large w3-right"><b>کامنت ها &nbsp;</b> <span
+                                        class="w3-tag">0</span></span></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+            {% endfor %}
+            <!-- END BLOG ENTRIES -->
+            {% if nnews.has_other_pages %}
+                <div class="w3-bar w3-content" style="width: fit-content;text-align: center">
+                    {% for i in nnews.paginator.page_range %}
+                        {% if nnews.number == i %}
+                            <a href="#" class="w3-button w3-green w3-border">{{ i }}</a>
+                        {% else %}
+                            <a href="?page={{ i }}" class="w3-button w3-border">{{ i }}</a>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            {% endif %}
+        </div>
+
+        <!-- Introduction menu -->
+        <div class="w3-col l4">
+            <!-- About Card -->
+            <div class="w3-card w3-margin w3-margin-top">
+                <img src="/media/imgs/avatar_g.jpg" style="width:100%">
+                <div class="w3-container w3-white">
+                    {% if user.is_authenticated %}
+                        <h4 class="w3-text-green"><a style="text-decoration: none" href="/signout">خروج</a></h4>
+                        <p>{{ user.get_username }}</p>
+                    {% else %}
+                        <h4 class="w3-text-green"><a style="text-decoration: none" href="/signin">ورود</a></h4>
+                        <p>پروژه مهندسی وب</p>
+                    {% endif %}
+                </div>
+            </div>
+            <hr>
+
+            <!-- Posts -->
+
+            <hr>
+
+            <!-- END Introduction Menu -->
+        </div>
+
+        <!-- END GRID -->
+    </div><br>
+
+    <!-- END w3-content -->
+    </div>
+{% endblock %}

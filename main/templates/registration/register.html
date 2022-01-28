@@ -1,0 +1,91 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+    <title>ثبتنام</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <script src="{% static 'vendor/myScript.js' %}"></script>
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <link rel="stylesheet" href="{% static 'vendor/styles.css' %}">
+
+</head>
+<body>
+<section class="ftco-section">
+    <div class="container" id="SignupForm" style="display: block">
+        <div class="row justify-content-center">
+            <div class="col-md-7 col-lg-5">
+                <div class="wrap">
+                    <div class="login-wrap p-4 p-md-5">
+                        <div class="text-center">
+                            <div class="">
+                                <h3 class="">ثبتنام</h3>
+                            </div>
+                        </div>
+                        <form action="" class="form" method="post">
+                            {% csrf_token %}
+                            <div class="form-group mt-3">
+                                <label class="form-check-label" for="signup_username">نام کاربری</label>
+                                <input name="user" type="text" id="signup_username" class="form-control"
+                                       style="direction: rtl"
+                                       required>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label class="form-check-label" for="signup_email">ایمیل</label>
+                                <input name="email" type="email" class="form-control" id="signup_email"
+                                       style="direction: rtl"
+                                       required>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-check-label" for="signup_pass">رمزعبور</label>
+                                <input name="pass" id="signup_pass" type="password" class="form-control"
+                                       style="direction: rtl"
+                                       required>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-check-label" for="signup_repass">تکرار رمزعبور</label>
+                                <input name="repass" id="signup_repass" type="password" class="form-control"
+                                       style="direction: rtl"
+                                       required>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-check-label" for="signup_repass">:موضوعات</label>
+                                <p><input class="w3-check" type="checkbox" value="politics" name="cat">
+                                    <label>سیاسی</label>
+                                    <input class="w3-check" type="checkbox" value="econimies" name="cat">
+                                    <label>اقتصادی</label>
+                                    <input class="w3-check" type="checkbox" value="sports" name="cat">
+                                    <label>ورزشی</label>
+                                    <input class="w3-check" type="checkbox" value="health" name="cat">
+                                    <label>سلامتی</label>
+                                    <input class="w3-check" type="checkbox" value="technology" name="cat">
+                                    <label>تکنولوژی</label></p>
+                            </div>
+                            <div class="form-group">
+                                <button type="submit" class="form-control btn btn-primary submit px-3" id="signup_btn">
+                                    ثبتنام
+                                </button>
+                            </div>
+                        </form>
+                        {% for msgg in messages %}
+                            <p class="w3-text">{{ msgg }}</p>
+                        {% endfor %}
+                        <p class="text-center" id='showSignin'><a data-toggle="tab" href="/signin">ورود</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script src="js/jquery.min.js"></script>
+<script src="js/popper.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/main.js"></script>
+
+</body>
+</html>
+
